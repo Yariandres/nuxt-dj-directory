@@ -13,9 +13,9 @@ async function signup() {
       email: email.value,
       password: password.value,
     });
+    successMsg.value = 'Check your email to confirm your account';
 
     if (error) throw error;
-    successMsg.value = 'Check you email to confirm your account';
   } catch (error) {
     errorMsg.value = error.message;
   }
@@ -47,8 +47,9 @@ async function signup() {
               placeholder="****"
             />
           </div>
-          <p>{{ errorMsg }}</p>
-          <p>{{ successMsg }}</p>
+          <p class="text-red-700">{{ errorMsg }}</p>
+          <p class="text-green-700">{{ successMsg }}</p>
+          <button type="submit" class="border p-4 rounded-lg">Submit</button>
         </form>
       </div>
     </section>
