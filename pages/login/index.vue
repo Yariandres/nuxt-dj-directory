@@ -3,8 +3,8 @@ const client = useSupabaseClient();
 const router = useRouter();
 
 const email = ref<string>();
-const password = ref<string>(null);
-const errorMsg = ref<string>(null);
+const password = ref<string | null>(null);
+const errorMsg = ref<string | null>(null);
 
 async function signIn() {
   try {
@@ -14,16 +14,16 @@ async function signIn() {
     });
     if (error) throw error;
     router.push('/profile');
-  } catch (error) {
+  } catch (error: any) {
     errorMsg.value = error.message;
   }
 }
 </script>
 <template>
-  <main>
+  <main class="bg-slate-300">
     <section class="h-screen flex justify-center items-center">
-      <div class="">
-        <h1>Login</h1>
+      <h1>Login</h1>
+      <div class="back">
         <form @submit.prevent="signIn">
           <div>
             <label for="email" class="block">Email</label>

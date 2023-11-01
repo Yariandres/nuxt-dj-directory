@@ -1,31 +1,100 @@
 <script setup lang="ts">
+const supabase = useSupabaseClient();
+const router = useRouter();
+
 // definePageMeta({
 //   middleware: ['auth'],
 // });
 
-const user = useSupabaseUser();
-const client = useSupabaseClient();
-const router = useRouter();
+const loading = ref(true);
+const username = ref('');
+const website = ref('');
+const avatar_path = ref('');
 
-async function logout() {
+loading.value = true;
+const user = useSupabaseUser();
+
+const { data } = await supabase
+  .from('profiles')
+  .select(`username, website, avatar_url`)
+  .eq('id', user.value.id)
+  .single();
+
+if (data) {
+  username.value = data.username;
+  website.value = data.website;
+  avatar_path.value = data.avatar_url;
+}
+
+loading.value = false;
+
+async function updateProfile() {
   try {
-    const { error } = await client.auth.signOut();
+    loading.value = true;
+    const user = useSupabaseUser();
+
+    const updates = {
+      id: user.value?.id,
+      username: username.value,
+      website: website.value,
+      avatar_url: avatar_path.value,
+      updated_at: new Date(),
+    };
+
+    const { error } = await supabase.from('profiles').upsert(updates, {
+      returning: 'minimal', // Don't return the value after inserting
+    });
     if (error) throw error;
-    router.push('/login');
-  } catch (error) {
-    console.log(error.message);
+  } catch (error: any) {
+    alert(error.message);
+  } finally {
+    loading.value = false;
+  }
+}
+
+async function signOut() {
+  try {
+    loading.value = true;
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
+    user.value = null;
+  } catch (error: any) {
+    alert(error.message);
+  } finally {
+    loading.value = false;
   }
 }
 </script>
 <template>
   <main>
-    <h1 class="text-xl mb-2">Email: {{ user.email }}</h1>
-    <button
-      @click="logout"
-      class="border rounded-lg p-4 bg-green-600"
-      type="button"
-    >
-      Logout
-    </button>
+    <form class="form-widget" @submit.prevent="updateProfile">
+      <div>
+        <label for="email">Email</label>
+        <input id="email" type="text" :value="user.email" disabled />
+      </div>
+      <div>
+        <label for="username">Username</label>
+        <input id="username" type="text" v-model="username" />
+      </div>
+      <div>
+        <label for="website">Website</label>
+        <input id="website" type="url" v-model="website" />
+      </div>
+
+      <div>
+        <input
+          type="submit"
+          class="button primary block"
+          :value="loading ? 'Loading ...' : 'Update'"
+          :disabled="loading"
+        />
+      </div>
+
+      <div>
+        <button class="button block" @click="signOut" :disabled="loading">
+          Sign Out
+        </button>
+      </div>
+    </form>
   </main>
 </template>
