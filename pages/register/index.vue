@@ -16,40 +16,52 @@ async function signup() {
     successMsg.value = 'Check your email to confirm your account';
 
     if (error) throw error;
-  } catch (error) {
+  } catch (error: any) {
     errorMsg.value = error.message;
   }
 }
 </script>
 <template>
-  <main>
+  <main class="bg-blue-100">
     <section class="h-screen flex justify-center items-center">
-      <div class="">
-        <h1>Register</h1>
+      <div class="flex flex-col bg-white p-6 rounded-md shadow-sm gap-4">
+        <h1 class="text-2xl p-4 text-center text-slate-600">
+          Register and create you profile
+        </h1>
+
         <form @submit.prevent="signup">
-          <div>
-            <label for="email" class="block">Email</label>
-            <input
-              v-model="email"
-              class="border"
-              type="text"
-              id="email"
-              placeholder="email@example.com"
-            />
+          <div class="flex flex-col gap-4">
+            <div>
+              <label for="email" class="block text-slate-500">Email</label>
+              <input
+                v-model="email"
+                class="border py-2 px-3 rounded-lg w-full"
+                type="text"
+                id="email"
+                placeholder="email@example.com"
+              />
+            </div>
+            <div>
+              <label for="password" class="block text-slate-500"
+                >Password</label
+              >
+              <input
+                v-model="password"
+                class="border py-2 px-3 rounded-lg w-full"
+                type="password"
+                id="password"
+                placeholder="****"
+              />
+            </div>
+            <p class="text-red-700">{{ errorMsg }}</p>
+            <p class="text-green-700">{{ successMsg }}</p>
           </div>
-          <div>
-            <label for="password" class="block">Password</label>
-            <input
-              v-model="password"
-              class="border"
-              type="password"
-              id="password"
-              placeholder="****"
-            />
-          </div>
-          <p class="text-red-700">{{ errorMsg }}</p>
-          <p class="text-green-700">{{ successMsg }}</p>
-          <button type="submit" class="border p-4 rounded-lg">Submit</button>
+          <button
+            type="submit"
+            class="border py-2 px-3 rounded-lg w-full bg-green-600 hover:bg-green-500 text-white hover:shadow-md"
+          >
+            Register
+          </button>
         </form>
       </div>
     </section>

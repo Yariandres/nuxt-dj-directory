@@ -20,7 +20,7 @@ async function signIn() {
 }
 </script>
 <template>
-  <main class="bg-slate-300">
+  <main>
     <section class="h-screen flex justify-center items-center">
       <h1>Login</h1>
       <div class="back">
@@ -46,7 +46,9 @@ async function signIn() {
             />
           </div>
           <p class="text-red-700">{{ errorMsg }}</p>
-          <button type="submit" class="border p-4 rounded-lg">Submit</button>
+          <button type="submit" class="border p-4 rounded-lg bg-stone-700">
+            Submit
+          </button>
         </form>
       </div>
     </section>

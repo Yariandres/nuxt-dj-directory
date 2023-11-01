@@ -70,7 +70,7 @@ async function signOut() {
     <form class="form-widget" @submit.prevent="updateProfile">
       <div>
         <label for="email">Email</label>
-        <input id="email" type="text" :value="user.email" disabled />
+        <input id="email" type="text" :value="user?.email" disabled />
       </div>
       <div>
         <label for="username">Username</label>
