@@ -66,35 +66,61 @@ async function signOut() {
 }
 </script>
 <template>
-  <main>
-    <form class="form-widget" @submit.prevent="updateProfile">
-      <div>
-        <label for="email">Email</label>
-        <input id="email" type="text" :value="user?.email" disabled />
-      </div>
-      <div>
-        <label for="username">Username</label>
-        <input id="username" type="text" v-model="username" />
-      </div>
-      <div>
-        <label for="website">Website</label>
-        <input id="website" type="url" v-model="website" />
-      </div>
+  <main class="bg-blue-900 h-screen">
+    <section class="mx-auto px-9 pt-9">
+      <div class="bg-white rounded-lg">
+        <form class="form-widget" @submit.prevent="updateProfile">
+          <div class="p-9 flex flex-col gap-4">
+            <div>
+              <label for="email" class="block text-slate-500">Email</label>
+              <input
+                class="border py-2 px-3 rounded-lg w-full"
+                id="email"
+                type="text"
+                :value="user?.email"
+                disabled
+              />
+            </div>
+            <div>
+              <label for="username" class="block text-slate-500"
+                >Username</label
+              >
+              <input
+                class="border py-2 px-3 rounded-lg w-full"
+                id="username"
+                type="text"
+                v-model="username"
+              />
+            </div>
+            <div>
+              <label for="website" class="block text-slate-500">Website</label>
+              <input
+                class="border py-2 px-3 rounded-lg w-full"
+                id="website"
+                type="url"
+                v-model="website"
+              />
+            </div>
 
-      <div>
-        <input
-          type="submit"
-          class="button primary block"
-          :value="loading ? 'Loading ...' : 'Update'"
-          :disabled="loading"
-        />
-      </div>
+            <div class="text-right">
+              <input
+                type="submit"
+                class="border py-2 px-3 rounded-lg bg-green-900 hover:bg-green-700 text-white hover:shadow-md"
+                :value="loading ? 'Loading ...' : 'Update'"
+                :disabled="loading"
+              />
 
-      <div>
-        <button class="button block" @click="signOut" :disabled="loading">
-          Sign Out
-        </button>
+              <button
+                class="border py-2 px-3 rounded-lg bg-blue-900 hover:bg-blue-700 text-white hover:shadow-md"
+                @click="signOut"
+                :disabled="loading"
+              >
+                Sign Out
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </section>
   </main>
 </template>

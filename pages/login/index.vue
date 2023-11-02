@@ -20,35 +20,43 @@ async function signIn() {
 }
 </script>
 <template>
-  <main>
+  <main class="bg-blue-900">
     <section class="h-screen flex justify-center items-center">
-      <h1>Login</h1>
-      <div class="back">
+      <div class="flex flex-col bg-white p-6 rounded-md shadow-sm gap-4">
+        <h1 class="text-2xl p-4 text-center text-slate-600">Login</h1>
+
         <form @submit.prevent="signIn">
-          <div>
-            <label for="email" class="block">Email</label>
-            <input
-              v-model="email"
-              class="border"
-              type="text"
-              id="email"
-              placeholder="email@example.com"
-            />
+          <div class="flex flex-col gap-4">
+            <div>
+              <label for="email" class="block text-slate-500">Email</label>
+              <input
+                v-model="email"
+                class="border py-2 px-3 rounded-lg w-full"
+                type="text"
+                id="email"
+                placeholder="email@example.com"
+              />
+            </div>
+            <div>
+              <label for="password" class="block text-slate-500"
+                >Password</label
+              >
+              <input
+                v-model="password"
+                class="border py-2 px-3 rounded-lg w-full"
+                type="password"
+                id="password"
+                placeholder="****"
+              />
+            </div>
+            <p class="text-red-700">{{ errorMsg }}</p>
+            <button
+              type="submit"
+              class="border py-2 px-3 rounded-lg w-full bg-green-800 hover:bg-green-700 text-white hover:shadow-md"
+            >
+              Login
+            </button>
           </div>
-          <div>
-            <label for="password" class="block">Password</label>
-            <input
-              v-model="password"
-              class="border"
-              type="password"
-              id="password"
-              placeholder="****"
-            />
-          </div>
-          <p class="text-red-700">{{ errorMsg }}</p>
-          <button type="submit" class="border p-4 rounded-lg bg-stone-700">
-            Submit
-          </button>
         </form>
       </div>
     </section>

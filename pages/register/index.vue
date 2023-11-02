@@ -22,7 +22,7 @@ async function signup() {
 }
 </script>
 <template>
-  <main class="bg-blue-100">
+  <main class="bg-blue-900">
     <section class="h-screen flex justify-center items-center">
       <div class="flex flex-col bg-white p-6 rounded-md shadow-sm gap-4">
         <h1 class="text-2xl p-4 text-center text-slate-600">
@@ -57,8 +57,9 @@ async function signup() {
             <p class="text-green-700">{{ successMsg }}</p>
           </div>
           <button
+            v-if="!successMsg"
             type="submit"
-            class="border py-2 px-3 rounded-lg w-full bg-green-600 hover:bg-green-500 text-white hover:shadow-md"
+            class="border py-2 px-3 rounded-lg w-full bg-green-900 hover:bg-green-700 text-white hover:shadow-md"
           >
             Register
           </button>
