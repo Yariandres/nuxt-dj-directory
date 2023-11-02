@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 const user = useSupabaseUser();
-console.log(user);
 </script>
 
 <template>
@@ -8,8 +7,8 @@ console.log(user);
     <NuxtLink to="/">DJME</NuxtLink>
 
     <div class="flex gap-4">
-      <NuxtLink to="/register">Registrer</NuxtLink>
-      <NuxtLink to="/login">Login</NuxtLink>
+      <NuxtLink v-if="!user" to="/register">Registrer</NuxtLink>
+      <NuxtLink v-if="!user" to="/login">Login</NuxtLink>
       <NuxtLink v-if="user" to="/profile">Profile</NuxtLink>
     </div>
   </nav>

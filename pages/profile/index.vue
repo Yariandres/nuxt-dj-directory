@@ -1,14 +1,14 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient();
 const router = useRouter();
-
-// definePageMeta({
-//   middleware: ['auth'],
-// });
+definePageMeta({
+  middleware: ['auth'],
+});
 
 const loading = ref(true);
 const username = ref('');
 const website = ref('');
+const bio = ref('');
 const avatar_path = ref('');
 
 loading.value = true;
@@ -16,13 +16,14 @@ const user = useSupabaseUser();
 
 const { data } = await supabase
   .from('profiles')
-  .select(`username, website, avatar_url`)
+  .select(`username, website, avatar_url, bio`)
   .eq('id', user.value.id)
   .single();
 
 if (data) {
   username.value = data.username;
   website.value = data.website;
+  bio.value = data.bio;
   avatar_path.value = data.avatar_url;
 }
 
@@ -38,6 +39,7 @@ async function updateProfile() {
       username: username.value,
       website: website.value,
       avatar_url: avatar_path.value,
+      bio: bio.value,
       updated_at: new Date(),
     };
 
@@ -71,6 +73,10 @@ async function signOut() {
       <div class="bg-white rounded-lg">
         <form class="form-widget" @submit.prevent="updateProfile">
           <div class="p-9 flex flex-col gap-4">
+            <profile-avatar
+              v-model:path="avatar_path"
+              @upload="updateProfile"
+            />
             <div>
               <label for="email" class="block text-slate-500">Email</label>
               <input
@@ -99,6 +105,16 @@ async function signOut() {
                 id="website"
                 type="url"
                 v-model="website"
+              />
+            </div>
+
+            <div>
+              <label for="website" class="block text-slate-500">Bio</label>
+              <input
+                class="border py-2 px-3 rounded-lg w-full"
+                id="website"
+                type="text"
+                v-model="bio"
               />
             </div>
 
