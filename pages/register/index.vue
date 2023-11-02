@@ -22,7 +22,9 @@ async function signup() {
 }
 </script>
 <template>
-  <main class="bg-blue-900">
+  <main
+    class="bg-gradient-to-b from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%"
+  >
     <section class="h-screen flex justify-center items-center">
       <div class="flex flex-col bg-white p-6 rounded-md shadow-sm gap-4">
         <h1 class="text-2xl p-4 text-center text-slate-600">

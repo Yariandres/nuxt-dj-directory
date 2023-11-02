@@ -68,7 +68,9 @@ async function signOut() {
 }
 </script>
 <template>
-  <main class="bg-blue-900 h-screen">
+  <main
+    class="h-screen bg-gradient-to-b from-indigo-950 via-red-500 to-indigo-950"
+  >
     <section class="mx-auto px-9 pt-9">
       <div class="bg-white rounded-lg">
         <form class="form-widget" @submit.prevent="updateProfile">

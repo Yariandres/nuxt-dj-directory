@@ -1,6 +1,8 @@
 <script setup lang="ts"></script>
 <template>
-  <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <main
+    class="h-screen bg-gradient-to-b from-indigo-950 via-red-500 to-indigo-950"
+  >
+    <home-hero />
+  </main>
 </template>
-
-<style scoped></style>
