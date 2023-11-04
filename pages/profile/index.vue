@@ -92,7 +92,7 @@ async function signOut() {
                 >Username</label
               >
               <input
-                class="border py-2 px-3 rounded-lg w-full"
+                class="border py-2 px-3 rounded-lg w-full bg-transparent text-slate-100"
                 id="username"
                 type="text"
                 v-model="username"
@@ -101,7 +101,7 @@ async function signOut() {
             <div>
               <label for="website" class="block text-slate-100">Website</label>
               <input
-                class="border py-2 px-3 rounded-lg w-full"
+                class="border py-2 px-3 rounded-lg w-full bg-transparent text-slate-100"
                 id="website"
                 type="url"
                 v-model="website"
@@ -111,7 +111,7 @@ async function signOut() {
             <div>
               <label for="website" class="block text-slate-100">Bio</label>
               <input
-                class="border py-2 px-3 rounded-lg w-full"
+                class="border py-2 px-3 rounded-lg w-full bg-transparent text-slate-100"
                 id="website"
                 type="text"
                 v-model="bio"

@@ -22,9 +22,7 @@ async function signup() {
 }
 </script>
 <template>
-  <main
-    class="bg-gradient-to-b from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%"
-  >
+  <main class="bg-slate-900">
     <section class="h-screen flex justify-center items-center">
       <div class="flex flex-col bg-white p-6 rounded-md shadow-sm gap-4">
         <h1 class="text-2xl p-4 text-center text-slate-600">
@@ -37,7 +35,7 @@ async function signup() {
               <label for="email" class="block text-slate-500">Email</label>
               <input
                 v-model="email"
-                class="border py-2 px-3 rounded-lg w-full"
+                class="border py-2 px-3 rounded-lg w-full bg-slate-400"
                 type="text"
                 id="email"
                 placeholder="email@example.com"

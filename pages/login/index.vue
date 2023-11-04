@@ -20,7 +20,7 @@ async function signIn() {
 }
 </script>
 <template>
-  <main class="bg-blue-900">
+  <main class="bg-slate-900">
     <section class="h-screen flex justify-center items-center">
       <div class="flex flex-col bg-white p-6 rounded-md shadow-sm gap-4">
         <h1 class="text-2xl p-4 text-center text-slate-600">Login</h1>
