@@ -3,7 +3,7 @@ const user = useSupabaseUser();
 </script>
 
 <template>
-  <nav class="flex justify-between px-6 py-6 bg-indigo-950">
+  <nav class="flex justify-between px-6 py-6 bg-slate-800">
     <NuxtLink class="text-white" to="/">DJME</NuxtLink>
 
     <div class="flex gap-4">
@@ -14,5 +14,4 @@ const user = useSupabaseUser();
       <NuxtLink v-if="user" class="text-white" to="/profile">Profile</NuxtLink>
     </div>
   </nav>
-  <hr />
 </template>

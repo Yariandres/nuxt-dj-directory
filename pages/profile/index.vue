@@ -68,11 +68,9 @@ async function signOut() {
 }
 </script>
 <template>
-  <main
-    class="h-screen bg-gradient-to-b from-indigo-950 via-red-500 to-indigo-950"
-  >
+  <main class="h-screen bg-slate-900">
     <section class="mx-auto px-9 pt-9">
-      <div class="bg-white rounded-lg">
+      <div class="rounded-lg bg-slate-900">
         <form class="form-widget" @submit.prevent="updateProfile">
           <div class="p-9 flex flex-col gap-4">
             <profile-avatar
@@ -80,7 +78,7 @@ async function signOut() {
               @upload="updateProfile"
             />
             <div>
-              <label for="email" class="block text-slate-500">Email</label>
+              <label for="email" class="block text-slate-100">Email</label>
               <input
                 class="border py-2 px-3 rounded-lg w-full"
                 id="email"
@@ -90,7 +88,7 @@ async function signOut() {
               />
             </div>
             <div>
-              <label for="username" class="block text-slate-500"
+              <label for="username" class="block text-slate-100"
                 >Username</label
               >
               <input
@@ -101,7 +99,7 @@ async function signOut() {
               />
             </div>
             <div>
-              <label for="website" class="block text-slate-500">Website</label>
+              <label for="website" class="block text-slate-100">Website</label>
               <input
                 class="border py-2 px-3 rounded-lg w-full"
                 id="website"
@@ -111,7 +109,7 @@ async function signOut() {
             </div>
 
             <div>
-              <label for="website" class="block text-slate-500">Bio</label>
+              <label for="website" class="block text-slate-100">Bio</label>
               <input
                 class="border py-2 px-3 rounded-lg w-full"
                 id="website"
@@ -123,7 +121,7 @@ async function signOut() {
             <div class="text-right">
               <input
                 type="submit"
-                class="border py-2 px-3 rounded-lg bg-green-900 hover:bg-green-700 text-white hover:shadow-md"
+                class="border py-2 px-3 mr-3 rounded-lg bg-green-900 hover:bg-green-700 text-white hover:shadow-md"
                 :value="loading ? 'Loading ...' : 'Update'"
                 :disabled="loading"
               />

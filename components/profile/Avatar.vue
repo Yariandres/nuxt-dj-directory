@@ -13,15 +13,15 @@ const downloadImage = async () => {
   try {
     const { data, error } = await supabase.storage
       .from('avatars')
-      .download(path.value);
+      .download(path?.value);
     if (error) throw error;
     src.value = URL.createObjectURL(data);
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error downloading image: ', error.message);
   }
 };
 
-const uploadAvatar = async (evt) => {
+const uploadAvatar = async (evt: any) => {
   files.value = evt.target.files;
   try {
     uploading.value = true;
@@ -43,7 +43,7 @@ const uploadAvatar = async (evt) => {
 
     emit('update:path', filePath);
     emit('upload');
-  } catch (error) {
+  } catch (error: any) {
     alert(error.message);
   } finally {
     uploading.value = false;
@@ -52,19 +52,19 @@ const uploadAvatar = async (evt) => {
 
 downloadImage();
 
-watch(path, () => {
-  if (path.value) {
+watch(path as any, () => {
+  if (path?.value) {
     downloadImage();
   }
 });
 </script>
 <template>
-  <div class="flex items-center">
+  <div class="flex items-center gap-6">
     <img
       v-if="src"
       :src="src"
       alt="Avatar"
-      class="mb-6"
+      class="mb-6 p-1 border-[1px] rounded-xl"
       style="width: 10em; height: 10em"
     />
     <div
